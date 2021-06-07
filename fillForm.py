@@ -87,7 +87,7 @@ def fill_examinee_data(sheet):
 
     i = 2 #in invalid file, i should begin from 1
     # when running the invalid file after fixing it, first param should be 1
-    for row in sheet.iter_rows(2, sheet.max_row):
+    for row in sheet.iter_rows(2, sheet.max_row): #you can change this to relevant indexes if you want to use the same excel file
         form_first_name = web.find_element_by_xpath('//*[@id="student_first_name"]')
         form_last_name = web.find_element_by_xpath('//*[@id="student_last_name"]')
         form_id = web.find_element_by_xpath('//*[@id="student_p_id"]')
@@ -118,11 +118,11 @@ def fill_examinee_data(sheet):
         form_city.click()
         search = web.find_element_by_xpath('/html/body/span/span/span[1]/input')
 
-        search.send_keys(u"דאלית")
+        search.send_keys(u"דאלית") #change to your city name
         time.sleep(2)
         elems = web.find_element_by_xpath('//*[@id="select2-student_main_city_cat_id-results"]')
         for element in elems.find_elements_by_class_name("select2-results__option"):
-            if element.text == "דאלית אל-כרמל":
+            if element.text == "דאלית אל-כרמל": #change it to your city name
                 element.click()
         time.sleep(2)
         select_school = Select(web.find_element_by_xpath('//*[@id="student_partner_id"]'))
